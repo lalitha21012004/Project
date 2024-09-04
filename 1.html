@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>To-do list application</h1>
+   <ul id="list">
+   </ul>
+   <input type="text" id="text">
+   <button id="mybutton">Add Task</button>
+   <script>
+const button=document.getElementById("mybutton");
+const list=document.getElementById("list");
+button.addEventListener("click",function(){
+    const text=document.getElementById("text").value;
+    const listitem=document.createElement("li");
+    const box=document.createElement("input");
+    box.type="checkbox";
+    box.addEventListener("change",function(){
+        if(box.checked){
+            listitem.classList.add("completed");
+        } else{
+            listitem.classList.remove("completed");
+        }
+    });
+    listitem.textContent=text;
+    listitem.appendChild(box);
+    const button2=document.createElement("button");
+    button2.textContent="Delete Task";
+    button2.onclick= function(){
+        list.removeChild(listitem);
+    };
+    listitem.appendChild(button2);
+    list.appendChild(listitem);
+});
+
+   </script>
+</body>
+</html>
